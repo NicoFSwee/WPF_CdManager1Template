@@ -1,0 +1,50 @@
+﻿<Window x:Class="CdManager.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CdManager.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="340" Width="511" MinWidth="392" MinHeight="180"
+        x:Name="wndMain">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="CD-Sammlung" Margin="0, 10, 0, 20" FontStyle="Oblique"/>
+        
+        <!--<ListBox x:Name="listBoxCds" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="{Binding ElementName=wndMain, Path=Width}"> 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Path=AlbumTitle}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=Artist}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+
+        <ListView Grid.Row="1" x:Name="listBoxCds">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="CD-Title" Width="200" DisplayMemberBinding="{Binding Path=AlbumTitle}"/>
+                    <GridViewColumn Header="Artist" Width="200" DisplayMemberBinding="{Binding Path=Artist}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <UniformGrid Grid.Row="2" Columns="3">
+            <Button x:Name="btnNew" Margin="10,10,10,10" Content="Neu"/>
+            <Button x:Name="btnDelete" Margin="10,10,10,10" Content="Löschen"/>
+            <Button x:Name="btnEdit" Margin="10,10,10,10" Content="CD bearbeiten"/>
+        </UniformGrid>
+    </Grid>
+</Window>
