@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CdManager.WPF"
         mc:Ignorable="d"
-        Title="NewCDWindow" Height="162" Width="306">
+        Title="NewCDWindow" Height="200" Width="306"
+        Style="{StaticResource ResourceKey=WindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -13,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Margin="0,10,0,20">Neue CD anlegen/CD bearbeiten</TextBlock>
+        <TextBlock x:Name="tbHeader" Grid.Row="0" Style="{StaticResource ResourceKey=FormCaptionStyle}"></TextBlock>
 
         <Grid Name="grdCdFields" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -30,8 +31,8 @@
             <TextBox x:Name="tbArtist" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Artist}"></TextBox>
         </Grid>
         <UniformGrid Rows="1" Grid.Row="2">
-            <Button x:Name="btnSave">Speichern</Button>
-            <Button x:Name="btnCancle">Abbrechen</Button>
+            <Button Template="{StaticResource ButtonTemplate}" x:Name="btnSave">Speichern</Button>
+            <Button Template="{StaticResource ButtonTemplate}" x:Name="btnCancle">Abbrechen</Button>
         </UniformGrid>
     </Grid>
 </Window>

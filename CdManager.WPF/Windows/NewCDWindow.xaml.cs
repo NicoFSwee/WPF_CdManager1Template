@@ -35,11 +35,13 @@ namespace CdManager.WPF
             if(_cd == null)
             {
                 DataContext = new Cd();
+                tbHeader.Text = "Neue CD anlegen";
                 isNewCd = true;
             }
             else
             {
                 DataContext = new Cd() { AlbumTitle = _cd.AlbumTitle, Artist = _cd.Artist };
+                tbHeader.Text = "CD bearbeiten";
                 isNewCd = false;
             }
             

@@ -4,6 +4,69 @@
              xmlns:local="clr-namespace:CdManager.WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style x:Key="FormCaptionStyle">
+            <Setter Property="Control.FontSize" Value="20"/>
+            <Setter Property="Control.FontWeight" Value="Bold"/>
+            <Setter Property="Control.Foreground" Value="Sienna"/>
+            <Setter Property="ItemsControl.Margin" Value="5,10,0,20"/>
+        </Style>
+
+        <Style x:Key="WindowStyle" TargetType="Window">
+            <Setter Property="Background" Value="Azure"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="MinHeight" Value="30"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFFFF07E" Offset="0"/>
+                        <GradientStop Color="Azure" Offset="0.5"/>
+                        <GradientStop Color="#FFFFFAEA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3,3,3,3"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation To="20" Duration="0:0:0.6" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation To="12" Duration="0:0:0.6" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Border x:Name="Border" BorderBrush="Blue" BorderThickness="3" CornerRadius="3" Background="Azure" Padding="3" Margin="3">
+                <TextBlock Margin="{TemplateBinding Padding}" Text="{TemplateBinding Content}" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="LightBlue"/>
+                    <Setter TargetName="Border" Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>
